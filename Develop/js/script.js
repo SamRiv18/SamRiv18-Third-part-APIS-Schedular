@@ -89,9 +89,5 @@ $(document).ready(function(){
     }
     // ---------------------------------------------------------------
     
-
-    
-
-
     liveTimeUpdate();// calls for liveTimeUpdate function so it can use CSS to update the schedule chart accordingly  
 })// closes dom
