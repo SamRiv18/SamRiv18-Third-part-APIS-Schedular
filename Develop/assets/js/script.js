@@ -1,5 +1,8 @@
 // displays the date and time on top of the page 
+//stores moment function to a variable called "today"
 var today = moment();
+
+//sets up the way the today's date is displayed at the top of the page
 $('#currentDay').text(today.format('dddd, MMMM Do'));
 
 // creates a listener for the save button
@@ -46,6 +49,7 @@ $(document).ready(function(){
 
     }// closes fucntion that checks for past, present or future time
 
+    // saves data to local storage for each hour-------------------
     $('#9am .description').val(localStorage.getItem('9am'));
     $('#10am .description').val(localStorage.getItem('10am'));
     $('#11am .description').val(localStorage.getItem('11am'));
@@ -55,9 +59,7 @@ $(document).ready(function(){
     $('#3pm .description').val(localStorage.getItem('3pm'));
     $('#4pm .description').val(localStorage.getItem('4pm'));
     $('#5pm .description').val(localStorage.getItem('5pm'));
+    // ------------------------------------------------------------
 
-
-    
-
-    liveTimeUpdate();
+    liveTimeUpdate();// calls for liveTimeUpdate function so it can use CSS to update the schedule chart accordingly  
 })// closes dom
