@@ -75,7 +75,7 @@ $(document).ready(function(){
 
     var deleteClicked = document.getElementsByClassName('deleteBtn');
     
-    // listens for the delete button to be clicked so it can remove data from the local storage-----------
+    // listens for the delete button to be clicked so it can remove data from the local storage
     deleteClicked.onclick = function(){ 
         $('#9am .description').val(localStorage.removeItem('9am'));
         $('#10am .description').val(localStorage.removeItem('10am'));
