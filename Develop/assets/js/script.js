@@ -8,12 +8,21 @@ $('#currentDay').text(today.format('dddd, MMMM Do'));
 // creates a listener for the save button
 $(document).ready(function(){
 
-    $('.saveBtn').on('lick', function(){
+    $('.saveBtn').on('click', function(){
         var timeSaved = $(this).parent().attr('id');
         var textSubmitted = $(this).siblings('.description').val();
         
         localStorage.setItem(timeSaved, textSubmitted); // saves user input to local storage in an array
     })// closes listener 
+
+    $('.deleteBtn').on('click', function(){
+        var timeSaved = $(this).parent().attr('id');
+        var textSubmitted = $(this).siblings('.description').val();
+            
+        localStorage.removeItem(timeSaved, textSubmitted); // saves user input to local storage in an array
+    })// closes listener 
+
+    
 
     // a function that keeps up with current time and acts accordingly. Bloccks the ability to submit text on past time blocks
     function liveTimeUpdate(){ 
@@ -60,6 +69,29 @@ $(document).ready(function(){
     $('#4pm .description').val(localStorage.getItem('4pm'));
     $('#5pm .description').val(localStorage.getItem('5pm'));
     // ------------------------------------------------------------
+    
+
+    // removes data from local storage-------------------------------
+
+    var deleteClicked = document.getElementsByClassName('deleteBtn');
+    
+    // listens for the delete button to be clicked so it can remove data from the local storage-----------
+    deleteClicked.onclick = function(){ 
+        $('#9am .description').val(localStorage.removeItem('9am'));
+        $('#10am .description').val(localStorage.removeItem('10am'));
+        $('#11am .description').val(localStorage.removeItem('11am'));
+        $('#12pm .description').val(localStorage.removeItem('12pm'));
+        $('#1pm .description').val(localStorage.removeItem('1pm'));
+        $('#2pm .description').val(localStorage.removeItem('2pm'));
+        $('#3pm .description').val(localStorage.removeItem('3pm'));
+        $('#4pm .description').val(localStorage.removeItem('4pm'));
+        $('#5pm .description').val(localStorage.removeItem('5pm'));
+    }
+    // ---------------------------------------------------------------
+    
+
+    
+
 
     liveTimeUpdate();// calls for liveTimeUpdate function so it can use CSS to update the schedule chart accordingly  
 })// closes dom
