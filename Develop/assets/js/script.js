@@ -15,21 +15,23 @@ $(document).ready(function(){
     // a function that keeps up with current time and acts accordingly. Bloccks the ability to submit text on past time blocks
     function liveTimeUpdate(){ 
 
-        var currentTime = moment().hour();
+        var currentTime = today.hour();
 
         $('.time-block').each(function (){
 
-            var blockPastTime = parseInt(($this).attr('id').split('hour')[1]);// iterates through the schedule chart according to the time
+            var blockPastTime = parseInt($(this).attr('id'));// iterates through the schedule chart according to the time
 
             // if the the current hour is greater than the past hour the function will clasify it as the past
             if(blockPastTime < currentTime){
+                $(this).removeClass('future');
+                $(this).removeClass('present');
                 $(this).addClass('past');
             } 
             
             //classifies it time as the present if current time is the same as the block time 
             else if(blockPastTime == currentTime){
-                $(this).removeClass('past');
                 $(this).removeClass('future');
+                $(this).removeClass('past');
                 $(this).addClass('present');
             }
 
@@ -44,9 +46,18 @@ $(document).ready(function(){
 
     }// closes fucntion that checks for past, present or future time
 
-    
+    $('#9am .description').val(localStorage.getItem('9am'));
+    $('#10am .description').val(localStorage.getItem('10am'));
+    $('#11am .description').val(localStorage.getItem('11am'));
+    $('#12pm .description').val(localStorage.getItem('12pm'));
+    $('#1pm .description').val(localStorage.getItem('1pm'));
+    $('#2pm .description').val(localStorage.getItem('2pm'));
+    $('#3pm .description').val(localStorage.getItem('3pm'));
+    $('#4pm .description').val(localStorage.getItem('4pm'));
+    $('#5pm .description').val(localStorage.getItem('5pm'));
+
 
     
 
-    
+    liveTimeUpdate();
 })// closes dom
